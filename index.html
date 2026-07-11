@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="it" data-lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Principato del Gallo — Portale Ufficiale · Official Portal</title>
+<meta name="description" content="Portale ufficiale del Principato del Gallo: atto di fondazione, leggi e decreti, Banco del Gallo, Gallino (GAL). Official portal of the Principato del Gallo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blu: #14265c;
+    --blu-scuro: #0d1a42;
+    --avorio: #f7f3e8;
+    --carta: #fffdf6;
+    --oro: #c9a227;
+    --oro-testo: #8a6d1a;
+    --inchiostro: #1d1d1b;
+    --grigio: #6b6455;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } *{ animation:none!important; transition:none!important; } }
+  body{
+    background: var(--avorio);
+    color: var(--inchiostro);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  a{ color: var(--blu); }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--oro); outline-offset: 3px; }
+
+  /* ---------- Language switching ---------- */
+  html[data-lang="it"] .en{ display:none !important; }
+  html[data-lang="en"] .it{ display:none !important; }
+
+  .lang-switch{
+    position:absolute;
+    top:1rem; right:1.1rem;
+    display:flex; gap:0;
+    border:1px solid var(--oro);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .lang-switch button{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.66rem; letter-spacing:.14em;
+    background:transparent;
+    color:#cfd6ea;
+    border:none;
+    padding:.35rem .65rem;
+    cursor:pointer;
+  }
+  .lang-switch button[aria-pressed="true"]{
+    background: var(--oro);
+    color: var(--blu-scuro);
+    font-weight:500;
+  }
+  .lang-switch button:not([aria-pressed="true"]):hover{ color: var(--oro); }
+
+  /* ---------- Masthead ---------- */
+  header{
+    background: var(--blu);
+    color: var(--avorio);
+    text-align:center;
+    padding: 3.2rem 1.2rem 2.6rem;
+    position:relative;
+  }
+  header::after{
+    content:"";
+    display:block;
+    position:absolute; left:0; right:0; bottom:0;
+    height:10px;
+    background:
+      linear-gradient(var(--oro), var(--oro)) 0 0/100% 2px no-repeat,
+      linear-gradient(var(--oro), var(--oro)) 0 6px/100% 1px no-repeat;
+  }
+  .stemma{
+    width:110px; height:auto;
+    filter: drop-shadow(0 2px 10px rgba(0,0,0,.35));
+    margin-bottom: 1rem;
+  }
+  .masthead-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.68rem; letter-spacing:.32em;
+    color: var(--oro);
+    text-transform:uppercase;
+    margin-bottom:.7rem;
+  }
+  h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    letter-spacing:.06em;
+    line-height:1.05;
+  }
+  .motto{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.15rem;
+    color:#e9dfc0;
+    margin-top:.5rem;
+  }
+  .motto-en{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.66rem; letter-spacing:.22em;
+    color: var(--oro);
+    text-transform:uppercase;
+    margin-top:.55rem;
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    background: var(--blu-scuro);
+    text-align:center;
+    padding:.55rem 1rem;
+  }
+  nav a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem; letter-spacing:.18em;
+    text-transform:uppercase;
+    color:#cfd6ea;
+    text-decoration:none;
+    margin: 0 .9rem;
+    display:inline-block;
+    padding:.25rem 0;
+    border-bottom: 1px solid transparent;
+  }
+  nav a:hover{ color: var(--oro); border-bottom-color: var(--oro); }
+
+  main{ max-width: 880px; margin: 0 auto; padding: 0 1.2rem 4rem; }
+
+  /* ---------- Section headers ---------- */
+  section{ margin-top: 3.6rem; }
+  .sez-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.66rem; letter-spacing:.3em;
+    text-transform:uppercase;
+    color: var(--oro-testo);
+  }
+  h2{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+    color: var(--blu);
+    margin:.15rem 0 .4rem;
+  }
+  .sez-rule{
+    width:64px; height:3px;
+    background: var(--oro);
+    margin:.6rem 0 1.4rem;
+  }
+  .lead{ max-width: 62ch; color:#3a372f; }
+
+  /* ---------- Registry (documents) ---------- */
+  .registro{ margin-top: 1.6rem; border-top: 1px solid #d9d0ba; }
+  .registro a.voce{
+    display:grid;
+    grid-template-columns: 9.5rem 1fr auto;
+    gap: 1.2rem;
+    align-items:baseline;
+    padding: 1.15rem .4rem;
+    border-bottom: 1px solid #d9d0ba;
+    text-decoration:none;
+    color: inherit;
+    background: transparent;
+    transition: background .18s ease;
+  }
+  .registro a.voce:hover{ background: var(--carta); }
+  .protocollo{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem; letter-spacing:.06em;
+    color: var(--oro-testo);
+    white-space:nowrap;
+  }
+  .voce-titolo{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:1.28rem;
+    color: var(--blu);
+    line-height:1.2;
+  }
+  .registro a.voce:hover .voce-titolo{ text-decoration: underline; text-decoration-color: var(--oro); text-underline-offset: 4px; }
+  .voce-sub{
+    font-style:italic;
+    font-size:.9rem;
+    color: var(--grigio);
+    margin-top:.15rem;
+    display:block;
+  }
+  .badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.64rem; letter-spacing:.14em;
+    color: var(--avorio);
+    background: var(--blu);
+    padding:.28rem .55rem;
+    border-radius:2px;
+    white-space:nowrap;
+  }
+  .nota-registro{
+    font-size:.85rem; color: var(--grigio);
+    margin-top:.8rem; font-style:italic;
+  }
+
+  /* ---------- Gallino card ---------- */
+  .banconota{
+    display:block;
+    text-decoration:none;
+    color: var(--avorio);
+    background:
+      radial-gradient(ellipse at 85% 15%, rgba(201,162,39,.22), transparent 55%),
+      var(--blu);
+    border: 1px solid var(--oro);
+    outline: 4px solid var(--blu);
+    outline-offset:-8px;
+    padding: 2rem 2.2rem;
+    margin-top:1.6rem;
+    position:relative;
+    transition: transform .18s ease;
+  }
+  .banconota:hover{ transform: translateY(-2px); }
+  .banconota .serie{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.64rem; letter-spacing:.24em;
+    color: var(--oro);
+    text-transform:uppercase;
+  }
+  .banconota h3{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size: clamp(2rem, 5vw, 2.9rem);
+    letter-spacing:.12em;
+    margin:.3rem 0 .5rem;
+    color: var(--avorio);
+  }
+  .banconota p{ max-width:58ch; font-size:.95rem; color:#dfe3f0; }
+  .banconota .dati{
+    display:flex; flex-wrap:wrap; gap:1.6rem;
+    margin-top:1.2rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.68rem; letter-spacing:.08em;
+    color:#cfd6ea;
+  }
+  .banconota .dati strong{ color: var(--oro); font-weight:500; }
+  .banconota .cta{
+    display:inline-block;
+    margin-top:1.4rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.7rem; letter-spacing:.2em;
+    text-transform:uppercase;
+    color: var(--oro);
+    border-bottom:1px solid var(--oro);
+    padding-bottom:.15rem;
+  }
+
+  /* ---------- Facts ---------- */
+  .fatti{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background:#d9d0ba;
+    border:1px solid #d9d0ba;
+    margin-top:1.6rem;
+  }
+  .fatto{ background: var(--carta); padding:1.1rem 1.2rem; }
+  .fatto .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.62rem; letter-spacing:.22em;
+    text-transform:uppercase;
+    color: var(--oro-testo);
+  }
+  .fatto .v{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600; font-size:1.25rem;
+    color: var(--blu);
+    margin-top:.2rem; line-height:1.25;
+  }
+
+  /* ---------- Links ---------- */
+  .collegamenti{ list-style:none; margin-top:1.4rem; }
+  .collegamenti li{
+    padding:.8rem .2rem;
+    border-bottom:1px solid #d9d0ba;
+    display:flex; flex-wrap:wrap; gap:.6rem; align-items:baseline;
+  }
+  .collegamenti li:first-child{ border-top:1px solid #d9d0ba; }
+  .collegamenti .dove{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.66rem; letter-spacing:.2em;
+    text-transform:uppercase;
+    color: var(--oro-testo);
+    min-width:9.5rem;
+  }
+  .collegamenti a{
+    font-weight:600; color: var(--blu);
+    text-decoration:none;
+    border-bottom:1px solid rgba(20,38,92,.3);
+  }
+  .collegamenti a:hover{ border-bottom-color: var(--oro); color: var(--oro-testo); }
+
+  footer{
+    margin-top:4.5rem;
+    background: var(--blu);
+    color:#cfd6ea;
+    text-align:center;
+    padding:2rem 1.2rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.66rem; letter-spacing:.18em;
+    text-transform:uppercase;
+    line-height:2;
+  }
+  footer .filetto{ color: var(--oro); }
+
+  @media (max-width: 640px){
+    .registro a.voce{ grid-template-columns: 1fr; gap:.25rem; }
+    .badge{ justify-self:start; }
+    .collegamenti .dove{ min-width:100%; }
+    .lang-switch{ top:.7rem; right:.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="lang-switch" role="group" aria-label="Lingua / Language">
+    <button type="button" id="btn-it" aria-pressed="true" onclick="setLang('it')">IT</button>
+    <button type="button" id="btn-en" aria-pressed="false" onclick="setLang('en')">EN</button>
+  </div>
+
+  <img class="stemma" src="https://principato-del-gallo.github.io/Gallino/stemma-gallo.png"
+       alt="Stemma del Principato del Gallo — Coat of arms of the Principato del Gallo">
+  <p class="masthead-eyebrow">
+    <span class="it">Portale ufficiale · Fondato il 4 gennaio MMXXVI</span>
+    <span class="en">Official portal · Founded 4 January MMXXVI</span>
+  </p>
+  <h1>PRINCIPATO DEL GALLO</h1>
+  <p class="motto">
+    <span class="it">Libertà · Amicizia · Prosperità</span>
+    <span class="en">Freedom · Friendship · Prosperity</span>
+  </p>
+  <p class="motto-en">Alae Libertatis, Radices Structurae</p>
+</header>
+
+<nav aria-label="Sezioni del portale / Portal sections">
+  <a href="#documenti"><span class="it">Documenti</span><span class="en">Documents</span></a>
+  <a href="#gallino">Gallino</a>
+  <a href="#nazione"><span class="it">La Nazione</span><span class="en">The Nation</span></a>
+  <a href="#collegamenti"><span class="it">Collegamenti</span><span class="en">Links</span></a>
+</nav>
+
+<main>
+
+  <section id="documenti">
+    <p class="sez-eyebrow"><span class="it">Archivio di Stato</span><span class="en">State Archive</span></p>
+    <h2><span class="it">Documenti ufficiali</span><span class="en">Official documents</span></h2>
+    <div class="sez-rule"></div>
+    <p class="lead">
+      <span class="it">Gli atti fondativi e la normativa del Principato, pubblicati integralmente
+      a fini di trasparenza. Le firme autografe sono conservate agli atti presso la sede di Casa Nostra,
+      Bernareggio.</span>
+      <span class="en">The founding acts and legislation of the Principato, published in full
+      for transparency. The original signatures are kept on record at the seat of Casa Nostra,
+      Bernareggio.</span>
+    </p>
+
+    <div class="registro">
+      <a class="voce" href="documenti/Atto_di_Fondazione_Principato_del_Gallo.pdf">
+        <span class="protocollo">Doc. n. 1/2026<br><span class="it">4 gen 2026</span><span class="en">4 Jan 2026</span></span>
+        <span>
+          <span class="voce-titolo">Atto di Fondazione del Principato del Gallo</span>
+          <span class="voce-sub">
+            <span class="it">Atto costitutivo dello Stato — 9 articoli</span>
+            <span class="en">Founding Act of the Principality of the Rooster — 9 articles</span>
+          </span>
+        </span>
+        <span class="badge">PDF</span>
+      </a>
+      <a class="voce" href="documenti/Leggi_e_Decreti_Principato_del_Gallo.pdf">
+        <span class="protocollo">Doc. n. 2/2026<br><span class="it">anno 2026</span><span class="en">year 2026</span></span>
+        <span>
+          <span class="voce-titolo">Leggi e Decreti del Principato del Gallo</span>
+          <span class="voce-sub">
+            <span class="it">Raccolta normativa ufficiale — leggi 1–10/2026</span>
+            <span class="en">Laws and Decrees — official compilation, laws 1–10/2026</span>
+          </span>
+        </span>
+        <span class="badge">PDF</span>
+      </a>
+      <a class="voce" href="documenti/Decreto_Istitutivo_Banco_del_Gallo.pdf">
+        <span class="protocollo">Doc. n. 3/2026<br><span class="it">anno 2026</span><span class="en">year 2026</span></span>
+        <span>
+          <span class="voce-titolo">Decreto istitutivo del Banco del Gallo</span>
+          <span class="voce-sub">
+            <span class="it">Tesoreria nazionale del Principato</span>
+            <span class="en">Decree establishing the Banco del Gallo — national treasury</span>
+          </span>
+        </span>
+        <span class="badge">PDF</span>
+      </a>
+    </div>
+    <p class="nota-registro">
+      <span class="it">Registro aggiornato dal Ministero dell'Interno e Segreteria di Stato.</span>
+      <span class="en">Registry maintained by the Ministry of Interior and Secretary of State.</span>
+    </p>
+  </section>
+
+  <section id="gallino">
+    <p class="sez-eyebrow"><span class="it">Tesoreria · Emissione MMXXVI</span><span class="en">Treasury · Issue MMXXVI</span></p>
+    <h2><span class="it">Il Gallino (GAL)</span><span class="en">The Gallino (GAL)</span></h2>
+    <div class="sez-rule"></div>
+    <p class="lead">
+      <span class="it">La valuta della comunità del Principato: un token ERC-20 sulla rete Polygon,
+      con regola monetaria scolpita nel codice ed emissione interamente pubblica.</span>
+      <span class="en">The community currency of the Principato: an ERC-20 token on the Polygon
+      network, with a monetary rule carved into its code and a fully public issuance.</span>
+    </p>
+
+    <a class="banconota" href="https://principato-del-gallo.github.io/Gallino/">
+      <span class="serie">Series PG · No. PG-2026-000001 · Polygon PoS</span>
+      <h3>GALLINO</h3>
+      <p class="it">«Il Gallino non promette ricchezze: promette soltanto di esistere, verificabilmente,
+      su una blockchain pubblica.» — La Tesoreria</p>
+      <p class="en">"The Gallino promises no riches: it only promises to exist, verifiably,
+      on a public blockchain." — The Treasury</p>
+      <div class="dati">
+        <span><strong>100.000.000</strong> <span class="it">emissione iniziale</span><span class="en">initial issue</span></span>
+        <span><strong>+10% max</strong> <span class="it">conio annuo, limite nel codice</span><span class="en">yearly minting, capped in code</span></span>
+        <span><strong>GAL/EURC</strong> <span class="it">pool pubblica di cambio</span><span class="en">public exchange pool</span></span>
+      </div>
+      <span class="cta">
+        <span class="it">Visita il sito ufficiale del Gallino →</span>
+        <span class="en">Visit the official Gallino website →</span>
+      </span>
+    </a>
+  </section>
+
+  <section id="nazione">
+    <p class="sez-eyebrow"><span class="it">Scheda di Stato</span><span class="en">State Factsheet</span></p>
+    <h2><span class="it">La Nazione in breve</span><span class="en">The Nation at a glance</span></h2>
+    <div class="sez-rule"></div>
+    <div class="fatti">
+      <div class="fatto"><div class="k"><span class="it">Fondazione</span><span class="en">Founded</span></div>
+        <div class="v"><span class="it">4 gennaio 2026</span><span class="en">4 January 2026</span></div></div>
+      <div class="fatto"><div class="k"><span class="it">Capitale</span><span class="en">Capital</span></div>
+        <div class="v">Casa Nostra, Bernareggio</div></div>
+      <div class="fatto"><div class="k"><span class="it">Governo</span><span class="en">Government</span></div>
+        <div class="v"><span class="it">Principato a caratteri presidenziali</span><span class="en">Principality with presidential elements</span></div></div>
+      <div class="fatto"><div class="k"><span class="it">Presidente</span><span class="en">President</span></div>
+        <div class="v">Daniele Comi</div></div>
+      <div class="fatto"><div class="k"><span class="it">Popolazione</span><span class="en">Population</span></div>
+        <div class="v"><span class="it">7 cittadini</span><span class="en">7 citizens</span></div></div>
+      <div class="fatto"><div class="k"><span class="it">Lingue ufficiali</span><span class="en">Official languages</span></div>
+        <div class="v"><span class="it">Italiano · Inglese</span><span class="en">Italian · English</span></div></div>
+      <div class="fatto"><div class="k"><span class="it">Valute</span><span class="en">Currencies</span></div>
+        <div class="v">Euro (€) · Gallino (GAL)</div></div>
+      <div class="fatto"><div class="k"><span class="it">Festa nazionale</span><span class="en">National holiday</span></div>
+        <div class="v"><span class="it">4 gennaio — Indipendenza</span><span class="en">4 January — Independence Day</span></div></div>
+    </div>
+  </section>
+
+  <section id="collegamenti">
+    <p class="sez-eyebrow"><span class="it">Rete istituzionale</span><span class="en">Institutional network</span></p>
+    <h2><span class="it">Collegamenti</span><span class="en">Links</span></h2>
+    <div class="sez-rule"></div>
+    <ul class="collegamenti">
+      <li><span class="dove"><span class="it">Enciclopedia</span><span class="en">Encyclopedia</span></span>
+        <a href="https://micronations.wiki/wiki/Principato_del_Gallo">
+          <span class="it">Principato del Gallo su MicroWiki</span>
+          <span class="en">Principato del Gallo on MicroWiki</span></a></li>
+      <li><span class="dove"><span class="it">Valuta</span><span class="en">Currency</span></span>
+        <a href="https://principato-del-gallo.github.io/Gallino/">
+          <span class="it">Gallino — sito ufficiale</span>
+          <span class="en">Gallino — official website</span></a></li>
+      <li><span class="dove">Social</span>
+        <a href="https://www.instagram.com/principatodelgallo/">
+          <span class="it">Instagram ufficiale @principatodelgallo</span>
+          <span class="en">Official Instagram @principatodelgallo</span></a></li>
+      <li><span class="dove"><span class="it">Archivio</span><span class="en">Archive</span></span>
+        <a href="https://github.com/principato-del-gallo">
+          <span class="it">Repository GitHub del Principato</span>
+          <span class="en">GitHub repositories of the Principato</span></a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  Principato del Gallo · Casa Nostra, Bernareggio<span class="filetto"> ✦ </span>MMXXVI<br>
+  <span class="it">Portale non commerciale · Governo del Principato del Gallo</span>
+  <span class="en">Non-commercial portal · Government of the Principato del Gallo</span>
+</footer>
+
+<script>
+  function setLang(l){
+    document.documentElement.dataset.lang = l;
+    document.documentElement.lang = l;
+    document.getElementById('btn-it').setAttribute('aria-pressed', l === 'it' ? 'true' : 'false');
+    document.getElementById('btn-en').setAttribute('aria-pressed', l === 'en' ? 'true' : 'false');
+  }
+  // Default language from the browser, Italian otherwise. No storage used.
+  (function(){
+    var nav = (navigator.language || 'it').toLowerCase();
+    setLang(nav.indexOf('it') === 0 ? 'it' : 'en');
+  })();
+</script>
+
+</body>
+</html>
